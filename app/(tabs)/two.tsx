@@ -1,14 +1,21 @@
-import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function TabTwoScreen() {
+  const instructions = [
+    "Welcome to Pokemon Memory Game",
+    "You will be shown Pokemon images starting from 6 images",
+    "You have to select all the images without repeating any",
+    "If you select a Pokemon twice, you lose",
+    "If you select all the Pokemons without repeating, you win",
+    "Good Luck!",
+  ]
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/two.tsx" />
+      <Text style={styles.title}>Instructions</Text>
+      {instructions.map((instruction, index) => (
+        <Text style={styles.inst} key={index}>{index}. {instruction}</Text>
+      ))}
+      <View style={styles.separator} />
     </View>
   );
 }
@@ -28,4 +35,10 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
+  inst: {
+    fontSize: 16,
+    textAlign: 'center',
+    marginVertical: 10,
+    color: 'green'
+  }
 });
